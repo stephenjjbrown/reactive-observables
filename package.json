@@ -2,13 +2,17 @@
   "name": "dependency-observables",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "build/main.js",
   "scripts": {
+    "build": "./node_modules/.bin/tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "rxjs": "^6.3.2"
+  },
+  "devDependencies": {
+    "typescript": "^3.0.3"
   }
 }
