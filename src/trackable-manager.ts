@@ -19,7 +19,10 @@ class TrackableManager {
     }
 
     stopListening() {
-        return this.listenStack.pop();
+        const dependencies = this.listenStack.pop();
+        if (dependencies == null)
+            throw new Error("Listening stack malformed, could not pop dependencies from stack");
+        return dependencies;
     }
 }
 

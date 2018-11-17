@@ -3,7 +3,7 @@ import { distinctUntilChanged, skip } from "rxjs/operators";
 import { trackableManager } from "./trackable-manager";
 import { Trackable } from "./trackable";
 
-export class TrackableComputedSubject<T> {
+export class TrackedComputedSubject<T> {
     private getter: () => T;
 
     private subject: BehaviorSubject<T>;

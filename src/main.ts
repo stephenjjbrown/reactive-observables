@@ -1,2 +1,5 @@
-export { TrackableSubject } from "./trackable-subject";
-export { TrackableComputedSubject } from "./trackable-computed-subject";
+export * from "./tracked-array";
+export * from "./tracked-computed-subject";
+export * from "./tracked-subject";
+export * from "./factories";
+export * from "./decorators";

@@ -1,29 +1,25 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var TrackableManager = /** @class */ (function () {
-    function TrackableManager() {
+class TrackableManager {
+    constructor() {
         this.listenStack = [];
     }
-    Object.defineProperty(TrackableManager.prototype, "isListening", {
-        get: function () {
-            return this.listenStack.length > 0;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    TrackableManager.prototype.trackableAccessed = function (subscribable) {
+    get isListening() {
+        return this.listenStack.length > 0;
+    }
+    trackableAccessed(subscribable) {
         if (this.isListening) {
-            var top = this.listenStack[this.listenStack.length - 1];
+            const top = this.listenStack[this.listenStack.length - 1];
             if (top.indexOf(subscribable) === -1)
                 top.push(subscribable);
         }
-    };
-    TrackableManager.prototype.startListening = function () {
+    }
+    startListening() {
         this.listenStack.push([]);
-    };
-    TrackableManager.prototype.stopListening = function () {
-        return this.listenStack.pop();
-    };
-    return TrackableManager;
-}());
-exports.trackableManager = new TrackableManager();
+    }
+    stopListening() {
+        const dependencies = this.listenStack.pop();
+        if (dependencies == null)
+            throw new Error("Listening stack malformed, could not pop dependencies from stack");
+        return dependencies;
+    }
+}
+export const trackableManager = new TrackableManager();
