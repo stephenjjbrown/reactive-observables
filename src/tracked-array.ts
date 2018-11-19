@@ -15,7 +15,7 @@ export class TrackedArray<T> extends TrackedSubject<T[]> {
         super.value = value;
     }
 
-    constructor(initialValue: T, compare?: (a: T[], b: T[]) => boolean) {
+    constructor(initialValue: T[], compare?: (a: T[], b: T[]) => boolean) {
         if (!Array.isArray(initialValue)) {
             throw new Error("Trackable array must only be assigned an array as a value");
         }

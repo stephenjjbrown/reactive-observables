@@ -1,7 +1,6 @@
 import { TrackedSubject } from "./tracked-subject";
-import { distinctUntilChanged, skip } from "rxjs/operators";
 import { isTrackableEntity } from "./decorators/trackable-decorator";
-import { Subscription, Observable, Observer, merge } from "rxjs";
+import { Subscription, Observable, merge } from "rxjs";
 import { subscribeAll } from "./decorators/tracked-property";
 
 // Tracks an object. If the object itself is changed, emit event, or if any of the objects children changes, emit event

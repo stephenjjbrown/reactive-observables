@@ -1,5 +1,4 @@
 import { registerTrackedPropertyDefinition } from "./tracked-property-definition";
-import { getOrSetupTrackedProperty } from "./tracked-property";
 import { getOrSetupComputedProperty } from "./computed-property";
 
 export function computed(proto: any, propertyName: string, descriptor: any) {

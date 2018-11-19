@@ -1,5 +1,6 @@
 import { registerTrackedPropertyDefinition } from "./tracked-property-definition";
-import { getOrSetupTrackedProperty, getTrackedProperty } from "./tracked-property";
+import { getTrackedProperty } from "./tracked-property";
+import { getOrSetupTrackedProperty } from "./get-or-create-tracked-property";
 
 /**
  * Wraps property in getters and setters for a TrackedSubject or TrackedArray;

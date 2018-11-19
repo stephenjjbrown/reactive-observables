@@ -16,25 +16,15 @@ const TrackedPropertyListKey = "_trackedProperties";
 
 const getTrackedPropertyList = <T>(obj: T) => ((obj as any)[TrackedPropertyListKey] = (obj as any)[TrackedPropertyListKey] || {}) as TrackedPropertyList<T>;
 
-export const getOrSetupTrackedProperty = <T, K extends keyof T>(obj: T, name: K, value: T[K]): TrackedTypeForValue<T[K]> => {
+export const getTrackedProperty = <T, K extends keyof T>(obj: T, name: K, notFound?: (list: TrackedPropertyList<T>, name: K) => TrackedTypeForValue<T[K]>) => {
     const list = getTrackedPropertyList(obj);
     const existing = list[name];
 
     if (!existing) {
-        list[name] = {
-            subject: createTracked(value as T[K])
-        }
-    }
-
-    return list[name].subject;
-}
-
-export const getTrackedProperty = <T, K extends keyof T>(obj: T, name: K) => {
-    const list = getTrackedPropertyList(obj);
-    const existing = list[name];
-
-    if (!existing) {
-        throw new Error("Property accessed before initialized: " +  name);
+        if (notFound)
+            return notFound(list, name)
+        else
+            throw new Error("Property accessed before initialized or property doesn't exist: " +  name);
     }
 
     return existing.subject;
@@ -44,10 +34,13 @@ export const getTrackedProperty = <T, K extends keyof T>(obj: T, name: K) => {
 
 
 
+
+
+
+
+
 export const getAllTrackedProperties = <T>(obj: T) => {
     const list = getTrackedPropertyDefinitionList(obj)
-
-
 
     return Object.keys(list)
         .map(key => ({
