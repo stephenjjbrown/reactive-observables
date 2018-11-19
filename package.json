@@ -11,13 +11,20 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "rxjs": "^6.3.2"
+    "lodash": "^4.17.11",
+    "rxjs": "^6.3.2",
+    "shallow-equal": "^1.0.0"
   },
   "devDependencies": {
+    "@types/jasmine": "^3.0.0",
+    "chai": "^4.2.0",
+    "chai-spies": "^1.0.0",
     "gulp": "^3.9.1",
     "gulp-better-rollup": "^3.4.0",
     "gulp-typescript": "^5.0.0-alpha.3",
     "gulp-util": "^3.0.8",
+    "jasmine": "^3.3.0",
+    "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.6"

@@ -1,4 +1,4 @@
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { distinctUntilChanged, skip } from "rxjs/operators";
 import { trackableManager } from "./trackable-manager";
 import { Trackable } from "./trackable";
@@ -37,15 +37,20 @@ export class TrackedComputedSubject<T> {
         }
     }
 
+    observable: Observable<T>;
+
     constructor(getter: () => T) {
+        
         this.getter = getter;
         this.subject = new BehaviorSubject(this.evaluateValue());
+        this.observable = this.subject
+            .pipe(distinctUntilChanged())
+            .pipe(skip(1));
     }
+    
 
     subscribe(observer: (value: T) => void) {
-        return this.subject
-            .pipe(distinctUntilChanged())
-            .pipe(skip(1))
+        return this.observable
             .subscribe(observer);
     }
 }

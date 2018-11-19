@@ -1,11 +1,10 @@
 import { TrackedSubject } from "./tracked-subject";
 import { distinctUntilChanged, skip } from "rxjs/operators";
-import { isTrackableEntity, subscribeAll } from "./decorators";
+import { isTrackableEntity } from "./decorators/trackable-decorator";
 import { Subscription, Observable, Observer, merge } from "rxjs";
+import { subscribeAll } from "./decorators/tracked-property";
 
-// Tracks an object. If the object itself is changed emit event, or if any of the objects children changes, emit event
-
-
+// Tracks an object. If the object itself is changed, emit event, or if any of the objects children changes, emit event
 export class TrackedEntity<T> {
     subject: TrackedSubject<T>;
 
@@ -43,39 +42,13 @@ export class TrackedEntity<T> {
         })
 
         if (isTrackableEntity(initialValue)) {
-
             // Setup subscription
             this.subscription = subscribeAll(initialValue, () => this.next());
         }
     }
 
     subscribe(observer: () => void) {
-        return merge(this.observable, this.subject.distinctObservable)
+        return merge(this.observable, this.subject.observable)
             .subscribe(observer);
     }
 }
-
-
-// export class TrackedSubjectq<T> {
-//     private subject: BehaviorSubject<T>;
-
-//     get value() {
-//         trackableManager.trackableAccessed(this);
-//         return this.subject.value;
-//     }
-
-//     set value(value) {
-//         this.subject.next(value);
-//     }
-
-//     constructor(initialValue: T) {
-//         this.subject = new BehaviorSubject(initialValue);
-//     }
-
-//     subscribe(observer: (value: T) => void) {
-//         return this.subject
-//             .pipe(distinctUntilChanged())
-//             .pipe(skip(1))
-//             .subscribe(observer);
-//     }
-// }

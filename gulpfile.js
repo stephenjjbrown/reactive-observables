@@ -30,10 +30,10 @@ gulp.task("rollup", ["typescript"], () => {
                 nodeResolve(),
             ]
         }, {
-            format: "iife" // Specifying the output format on this line instead of the first fixes some resolution problems
+            format: "cjs" // Specifying the output format on this line instead of the first fixes some resolution problems
         }))
         .on('error', log)
-        .pipe(gulp.dest("dist"))
+        .pipe(gulp.dest("lib"))
 });
 //gulp.task("rollup:watch", ["rollup"], () => gulp.watch("./src/ts/**/*.{ts,tsx}", ["rollup"]));
 
@@ -41,7 +41,7 @@ gulp.task("rollup", ["typescript"], () => {
 
 gulp.task("declarations", ["typescript"], () => {
     return gulp.src(["./build/**/*.d.ts"])
-        .pipe(gulp.dest("dist"));
+        .pipe(gulp.dest("lib"));
 })
 
 

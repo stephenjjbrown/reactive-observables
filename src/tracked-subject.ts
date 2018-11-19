@@ -5,7 +5,7 @@ import { trackableManager } from "./trackable-manager";
 export class TrackedSubject<T> {
     private subject: BehaviorSubject<T>;
     
-    distinctObservable: Observable<T>;
+    observable: Observable<T>;
 
     get value() {
         trackableManager.trackableAccessed(this);
@@ -16,29 +16,16 @@ export class TrackedSubject<T> {
         this.subject.next(value);
     }
 
-    private updateForced = false;
-
-    forceUpdate() {
-        this.updateForced = true;
-        this.subject.next(this.subject.value);
-    }
-
-    constructor(initialValue: T) {
+    constructor(initialValue: T, compare?: (a: T, b: T) => boolean) {
         this.subject = new BehaviorSubject(initialValue);
 
-        this.distinctObservable = this.subject
-            .pipe(distinctUntilChanged((a, b) => {
-                if (this.updateForced) {
-                    this.updateForced = false;
-                    return false;
-                }
-                return a === b;
-            }))
+        this.observable = this.subject
+            .pipe(distinctUntilChanged(compare))
             .pipe(skip(1))
     }
 
     subscribe(observer: (value: T) => void) {
-        return this.distinctObservable
+        return this.observable
             .subscribe(observer);
     }
 }
