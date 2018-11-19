@@ -3,4 +3,5 @@
  * @param constructor
  */
 export declare function trackable(constructor: any): void;
+export declare const isTrackableEntity: (obj: any) => boolean;
 //# sourceMappingURL=trackable-decorator.d.ts.map

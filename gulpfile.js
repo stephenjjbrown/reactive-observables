@@ -30,7 +30,7 @@ gulp.task("rollup", ["typescript"], () => {
                 nodeResolve(),
             ]
         }, {
-            format: "cjs" // Specifying the output format on this line instead of the first fixes some resolution problems
+            format: "esm" // Specifying the output format on this line instead of the first fixes some resolution problems
         }))
         .on('error', log)
         .pipe(gulp.dest("lib"))

@@ -29,6 +29,11 @@ import { TrackedEntity } from "../lib/tracked-entity";
                     return this.innerValue + 4 + externalThing.value;
                 }
 
+                // @computed
+                // get something() {
+                //     return this.total * 2;
+                // }
+
                 constructor() {
                     const test = this.total + this.total
                     

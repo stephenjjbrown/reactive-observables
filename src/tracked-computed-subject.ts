@@ -10,7 +10,7 @@ export class TrackedComputedSubject<T> {
 
     private evaluateValue() {
         trackableManager.trackableAccessed(this);
-        trackableManager.startListening();
+        trackableManager.startListening(this);
         const val = this.getter();
         const dependencies = trackableManager.stopListening();
         this.updateSubscriptions(dependencies);
