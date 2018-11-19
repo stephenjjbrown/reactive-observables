@@ -1,9 +1,10 @@
 import { Trackable } from "./trackable";
 declare class TrackableManager {
+    private listenerStack;
     private listenStack;
     private readonly isListening;
     trackableAccessed(subscribable: Trackable<any>): void;
-    startListening(): void;
+    startListening(listener: Trackable<any>): void;
     stopListening(): Trackable<any>[];
 }
 export declare const trackableManager: TrackableManager;
