@@ -1,6 +1,7 @@
 const chai = require("chai");
 const spy = require("chai-spies");
 const { TrackedArray } = require("../src/tracked-array");
+const { TrackedComputedSubject } = require("../src/tracked-computed-subject");
 
 chai.use(spy);
 

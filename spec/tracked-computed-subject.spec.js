@@ -34,5 +34,20 @@ describe("TrackedComputedSubject", () => {
 
         chai.expect(dCount).to.be.equal(2);
         chai.expect(count).to.equal(4);
+    });
+
+
+    it("should throw if circular dependencies detected", () => {
+        // const z = new TrackedSubject(false);
+        // var b;
+        // const a = new TrackedComputedSubject(() => {
+        //     z.value //?
+        //     b && b.value //?
+        //     return z.value ? b.value : null
+        // });
+        // b = new TrackedComputedSubject(() => a.value);
+
+        // z.value = true;
+        // 1 //?
     })
 })

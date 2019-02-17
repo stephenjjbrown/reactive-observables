@@ -8,10 +8,15 @@ class TrackableManager {
         return this.listenStack.length > 0;
     }
     trackableAccessed(subscribable) {
-        if (this.listenStack.some(arr => arr.some(s => s === subscribable))) {
-            console.error("Trackable is its own dependency: ", subscribable);
-            throw new Error("Circular dependency detected");
-        }
+        // This is detecting when a trackable is accessed twice in the same computed.
+        // if (this.listenStack.some(arr => arr.some(s => s === subscribable))) {
+        //     console.error("Trackable is its own dependency: ", subscribable);
+        //     throw new Error("Circular dependency detected");
+        // }
+        // if (this.listenerStack.some(t => t === subscribable)) {
+        //     console.error("Trackable is its own dependency: ", subscribable);
+        //     throw new Error("Circular dependency detected");
+        // }
         if (this.isListening) {
             const top = this.listenStack[this.listenStack.length - 1];
             if (top.indexOf(subscribable) === -1)
