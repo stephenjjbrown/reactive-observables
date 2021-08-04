@@ -1,5 +1,9 @@
 import * as chai from "chai";
+import * as spy from "chai-spies";
+import { subscribe } from "../src/decorators/subscribe";
 import { computed, getComputedProperty, getTrackedProperty, tracked, TrackedComputedSubject } from "../src/main";
+
+chai.use(spy);
 
 describe("@tracked Property Decorator", () => {
     it("should wrap TrackedSubjects in getters and setters on a class", () => {
@@ -33,32 +37,65 @@ describe("@tracked Property Decorator", () => {
                     this.never;
                     //getTrackedProperty(this, "never").value
                 }).to.throw();
+
+                
+                // Testing subscribe function on decorated properties
+                const spy = chai.spy();
+
+                subscribe(this, "foo", spy); // TrackedSubject
+                subscribe(this, "arr", spy); // TrackedArray
+
+                this.foo = 100;
+                this.arr = [100];
+                chai.expect(spy).to.be.called(2);
+
+                chai.expect(() => {
+                    subscribe(this, "doesntexist" as any, spy);
+                }).to.throw();
+                
+                
             }
         }
+
 
         const test = new Test();
     })
 });
 
 describe("@computed Property Decorator", () => {
-    class Bar {
-        @tracked
-        baz = 4;
+    it("should wrap TrackedComputedSubjects in getters and setters on a class", () => {
 
-        @computed
-        get foo() {
-            return this.baz * 3;
-        }
+        class Bar {
+            @tracked
+            baz = 4;
 
-        constructor() {
-            getComputedProperty(this, "foo")
-                .subscribe(value => {
+            @computed
+            get foo() {
+                return this.baz * 3;
+            }
+
+            constructor() {
+                this.baz = 1;
+
+                // Testing subscribe function on decorated properties
+                const spy = chai.spy();
+
+                subscribe(this, "foo", spy);
+
+                const subscription = subscribe(this, "foo", value => {
                     chai.expect(value).to.equal(15);
                 });
 
-            this.baz = 5;
-        }
-    }
+                this.baz = 5;
 
-    chai.expect(() => new Bar()).to.not.throw();
-}) 
+                chai.expect(spy).to.be.called(1);
+
+                // chai.expect(() => {
+                //     subscribe(this, "doesntexist" as any, spy);
+                // }).to.throw();
+            }
+        }
+
+        chai.expect(() => new Bar()).to.not.throw();
+    });
+});

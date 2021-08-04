@@ -14,7 +14,7 @@ type TrackedPropertyList<T> = {
 
 const TrackedPropertyListKey = "_trackedProperties";
 
-const getTrackedPropertyList = <T>(obj: T) => ((obj as any)[TrackedPropertyListKey] = (obj as any)[TrackedPropertyListKey] || {}) as TrackedPropertyList<T>;
+export const getTrackedPropertyList = <T>(obj: T) => ((obj as any)[TrackedPropertyListKey] = (obj as any)[TrackedPropertyListKey] || {}) as TrackedPropertyList<T>;
 
 export const getTrackedProperty = <T, K extends keyof T>(obj: T, name: K, notFound?: (list: TrackedPropertyList<T>, name: K) => TrackedTypeForValue<T[K]>) => {
     const list = getTrackedPropertyList(obj);

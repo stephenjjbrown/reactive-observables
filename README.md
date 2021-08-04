@@ -12,7 +12,7 @@ Framework-agnostic observables and computed properties that update when their de
 
 **Different words for the same thing:**
 
-RxJS and some frameworks like Knockout and Vue use different interpretations and definitions of the word ***observable***. 
+RxJS and some frameworks like Knockout and Vue use different implementations of the observable pattern and different definitions for an *observable*. 
 
 An observable in RxJS is an abstract stream that simply provides a new value to subscribers when .next() is called on it. They are not stateful, and the last used value is not stored. Subscribers always get notified, regardless of whether the new value is different from the last one.
 
@@ -58,11 +58,10 @@ class Bar {
         // Use just like any property
         foo = 5;
 
-        // Manual subscriptions require a bit more work
-        getTrackedProperty(this, "foo")
-            .subscribe(newValue => {
-                console.log(newValue);
-            });
+        // Subscribe to changes on the property
+        subscribe(this, "foo", newValue => {
+            console.log(newValue);
+        });
     }
 }
 ```
@@ -116,10 +115,9 @@ class Bar {
         doubled; // 10
 
         // Subcribe to the property
-        getComputedProperty(this, "doubled")
-            .subscribe(newValue => {
-                console.log(newValue);
-            });
+        subscribe(this, "doubled", newValue => {
+            console.log(newValue);
+        });
     }
 }
 ```
@@ -174,10 +172,9 @@ class Bar {
         foo = [...foo, 7];
 
         // Subscribe to the array
-        getTrackedProperty(this, "foo")
-            .subscribe(newValue => {
-                console.log(newValue);
-            });
+        subscribe(this, "foo", newValue => {
+            console.log(newValue);
+        });
     }
 }
 ```

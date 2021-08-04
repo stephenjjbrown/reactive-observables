@@ -10,7 +10,7 @@ type ComputedPropertyList<T> = {
 
 const ComputedPropertyListKey = "_computedProperties";
 
-const getComputedPropertyList = <T>(obj: T) => ((obj as any)[ComputedPropertyListKey] = (obj as any)[ComputedPropertyListKey] || {}) as ComputedPropertyList<T>;
+export const getComputedPropertyList = <T>(obj: T) => ((obj as any)[ComputedPropertyListKey] = (obj as any)[ComputedPropertyListKey] || {}) as ComputedPropertyList<T>;
 
 export const getOrSetupComputedProperty = <T, K extends keyof T>(obj: T, name: K, getter: () => T[K]): TrackedComputedSubject<T[K]> => {
     const list = getComputedPropertyList(obj);
