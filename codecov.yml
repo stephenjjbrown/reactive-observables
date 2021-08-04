@@ -1,6 +1,7 @@
 codecov:
   require_ci_to_pass: yes
   ci:
+    - "travis-ci.com"
     - "travis.org"
 
 coverage:
