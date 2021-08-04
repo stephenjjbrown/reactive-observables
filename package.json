@@ -7,7 +7,9 @@
   "scripts": {
     "build": "./node_modules/.bin/gulp",
     "test": "./node_modules/.bin/jasmine-ts \"spec/**/*.spec.ts\"",
-    "coverage": "./node_modules/.bin/nyc report -r json -x \"*.spec.ts\" && mv coverage/coverage-final.json coverage/coverage.json"
+    "coverage": "./node_modules/.bin/nyc npm test",
+    "report": "./node_modules/.bin/nyc report -r json -x \"*.spec.ts\"",
+    "merge": "nyc merge .nyc_output coverage.json"
   },
   "author": "",
   "license": "ISC",

@@ -2,8 +2,8 @@ language: node_js
 node_js:
 - '16.0'
 script:
-- npm test
 - npm run coverage
+- npm run merge
 after_success:
 - curl -Os https://uploader.codecov.io/latest/linux/codecov
 - chmod +x codecov
