@@ -1,6 +1,6 @@
 {
   "name": "reactive-observables",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "",
   "main": "./lib/main.js",
   "types": "./lib/main.d.ts",
