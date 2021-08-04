@@ -19,16 +19,18 @@ describe("TrackedArray", () => {
 
         array.value = [1,2,3,4];
 
-        chai.expect(spy).to.have.been.called();
+        chai.expect(spy).to.have.been.called(1);
     });
 
     it("should use shallow compare to determine whether to notify subscribers", () => {
-        const array = new TrackedArray([1,2,3]);
+        const initialArray = [1,2,3];
+        const array = new TrackedArray(initialArray);
         const spy = chai.spy();
         array.subscribe(spy);
 
         // Will not call subscribers, even though references are different
         array.value = [1,2,3];
+        array.value = initialArray; // exactly equal/identical
 
         // Will notify subscribers both times -- i.e. not a deep equal
         array.value = [{a: 1}, {b: 2}] as any;
