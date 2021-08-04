@@ -38,7 +38,7 @@ export class TrackedEntity<T> {
 
         this.observable = new Observable((subscriber) => {
             this.next = () => subscriber.next();
-        })
+        });
 
         if (isTrackableEntity(initialValue)) {
             // Setup subscription
