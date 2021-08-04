@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/stephenjjbrown/computed-observable.svg?branch=master)](https://travis-ci.com/stephenjjbrown/computed-observable)
+
 ![alt text](https://github.com/stephenjjbrown/computed-observable/blob/master/readme-header.jpg?raw=true)
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/5f466b241a624285b2a0144a3f096530)](https://app.codacy.com/gh/stephenjjbrown/computed-observable?utm_source=github.com&utm_medium=referral&utm_content=stephenjjbrown/computed-observable&utm_campaign=Badge_Grade_Settings)
