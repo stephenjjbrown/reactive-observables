@@ -1,9 +1,9 @@
 import { TrackedSubject } from "./tracked-subject";
 export declare class TrackedArray<T> {
     subject: TrackedSubject<T[]>;
-    value: T[];
+    get value(): T[];
+    set value(value: T[]);
     constructor(initialValue: T[], compare?: (a: T[], b: T[]) => boolean);
-    readonly observable: import("rxjs/internal/Observable").Observable<T[]>;
-    subscribe(observer: (value: T[]) => void): import("rxjs/internal/Subscription").Subscription;
+    get observable(): import("rxjs").Observable<T[]>;
+    subscribe(observer: (value: T[]) => void): import("rxjs").Subscription;
 }
-//# sourceMappingURL=tracked-array.d.ts.map

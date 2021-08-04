@@ -5,8 +5,8 @@ export declare class TrackedEntity<T> {
     subscription: Subscription | null;
     observable: Observable<undefined>;
     next: () => void;
-    value: T;
+    get value(): T;
+    set value(value: T);
     constructor(initialValue: T);
     subscribe(observer: () => void): Subscription;
 }
-//# sourceMappingURL=tracked-entity.d.ts.map

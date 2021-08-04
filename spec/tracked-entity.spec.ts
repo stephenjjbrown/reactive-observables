@@ -30,6 +30,9 @@ import { TrackedEntity } from "../lib/tracked-entity";
                 }
 
                 constructor() {
+                    this.total + this.total; // Call the getter twice
+                    
+                    // TODO: Double-check this test. Does this make sense?
                     // Ensure it's not just calling the regular class getter
                     chai.expect(this.count).to.equal(1);
                 }

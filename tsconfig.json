@@ -1,17 +1,12 @@
 {
     "compilerOptions": {
-        "target": "es2015",
+        "target": "es6",
         "moduleResolution": "node",
         "outDir": "build",
         "declaration": true,
         "declarationDir": "dist",
         "experimentalDecorators": true,
         "strict": true,
-        "strictPropertyInitialization": false,
-        "lib": [
-            "es5",
-            "es2015.promise",
-            "es2015.iterable"
-        ]
+        "strictPropertyInitialization": false
     }
 }
