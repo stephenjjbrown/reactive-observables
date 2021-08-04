@@ -49,8 +49,8 @@ import { computed, trackable, tracked, TrackedComputedSubject, TrackedEntity, Tr
                 }
             }
 
-
-            const test = new TrackedEntity(new Test()) as TrackedEntity<Test>;
+            const testObj = new Test();
+            const test = new TrackedEntity(testObj);
             const spy = chai.spy();
             test.subscribe(spy);
 
@@ -62,6 +62,10 @@ import { computed, trackable, tracked, TrackedComputedSubject, TrackedEntity, Tr
 
             chai.expect(test.value.computed.value).to.equal(46);
 
-            chai.expect(spy).to.have.been.called(4);
+            testObj.foo = 7; // This should call subscribers
+            test.value = null as any; // Make sure subscription is removed when tracked entity is updated to a new value
+            testObj.foo = 6; // This should not call subscribers
+
+            chai.expect(spy).to.have.been.called(6);
         })
     });
