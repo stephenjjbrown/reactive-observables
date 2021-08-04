@@ -1,5 +1,7 @@
 ![alt text](https://github.com/stephenjjbrown/computed-observable/blob/master/readme-header.jpg?raw=true)
 
+[![Wallaby.js](https://img.shields.io/badge/wallaby.js-configured-green.svg)](https://wallabyjs.com)
+
 # Reactive Observables
 
 Framework-agnostic observables and computed properties that update when their dependencies change, a la Knockout or Vue.js observables, built on and compatible with RxJS.
