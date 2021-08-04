@@ -1,8 +1,6 @@
-const chai = require("chai");
-const { TrackedArray } = require("../src/tracked-array");
-const { TrackedSubject } = require("../src/tracked-subject");
-const { createTracked } = require("../src/factories");
-const { shallowEqualArrays } = require("../src/shallow-equal");
+import * as chai from "chai";
+import { createTracked, TrackedArray, TrackedSubject } from "../src/main";
+import { shallowEqualArrays } from "../src/shallow-equal";
 
 describe("createTracked", () => {
     it("should create TrackedArray if given an array", () => {
@@ -18,4 +16,4 @@ describe("createTracked", () => {
         chai.expect(tracked).to.be.instanceOf(TrackedSubject);
         chai.expect(tracked.value).to.equal(35);
     })
-})
+});

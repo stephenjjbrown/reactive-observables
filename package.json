@@ -1,12 +1,12 @@
 {
   "name": "reactive-observables",
-  "version": "2.0",
+  "version": "2.0.0",
   "description": "",
   "main": "./lib/main.js",
   "types": "./lib/main.d.ts",
   "scripts": {
     "build": "./node_modules/.bin/gulp",
-    "test": "istanbul cover --include-all-sources jasmine-node spec"
+    "test": "./node_modules/.bin/istanbul cover --include-all-sources ./node_modules/.bin/jasmine-ts \"./spec/**/*.ts\""
   },
   "author": "",
   "license": "ISC",
@@ -26,8 +26,12 @@
     "gulp-util": "^3.0.8",
     "istanbul": "^0.4.5",
     "jasmine": "^3.8.0",
+    "jasmine-node": "^3.0.0",
+    "jasmine-ts": "^0.4.0",
+    "nyc": "^15.1.0",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-node-resolve": "^3.4.0",
+    "ts-node": "^10.1.0",
     "typescript": "^3.9.10"
   }
 }

@@ -1,7 +1,5 @@
-const chai = require("chai");
-const { TrackedComputedSubject } = require("../src/tracked-computed-subject");
-const { TrackedSubject } = require("../src/tracked-subject");
-const { TrackedArray } = require("../src/tracked-array");
+import * as chai from "chai";
+import { TrackedArray, TrackedComputedSubject, TrackedSubject } from "../src/main";
 
 describe("TrackedComputedSubject", () => {
     it("should calculate combined value of other tracked values and update only as dependents update", () => {
@@ -12,7 +10,7 @@ describe("TrackedComputedSubject", () => {
         let dCount = 0;
         const d = new TrackedComputedSubject(() => {
             dCount++;
-            return c.value.reduce((a,b) => a+b);
+            return c.value.reduce((a: any, b: any) => a+b);
         });
 
         let count = 0;
@@ -50,4 +48,4 @@ describe("TrackedComputedSubject", () => {
         // z.value = true;
         // 1 //?
     })
-})
+});

@@ -1,6 +1,6 @@
-const chai = require("chai");
-const spies = require("chai-spies");
-const { TrackedSubject } = require("../src/tracked-subject");
+import * as chai from "chai";
+import * as spies from "chai-spies";
+import { TrackedSubject } from "../src/main";
 
 chai.use(spies);
 
@@ -43,13 +43,13 @@ describe("TrackedSubject", () => {
         customSubject.subscribe(customSpy);
 
         // For == undefined and null will be considered the same. Hence 5 instead of 6
-        customSubject.value = undefined;
-        customSubject.value = null;
+        customSubject.value = undefined as any;
+        customSubject.value = null as any;
         customSubject.value = NaN;
         customSubject.value = NaN;
-        customSubject.value = [1,2];
-        customSubject.value = [1,2];
+        customSubject.value = [1,2] as any;
+        customSubject.value = [1,2] as any;
 
         chai.expect(customSpy).to.have.been.called(5);
     });
-})
+});

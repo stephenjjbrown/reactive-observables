@@ -1,7 +1,6 @@
-const chai = require("chai");
-const spy = require("chai-spies");
-const { TrackedArray } = require("../src/tracked-array");
-const { TrackedComputedSubject } = require("../src/tracked-computed-subject");
+import * as chai from "chai";
+import * as spy from "chai-spies";
+import { TrackedArray } from "../src/main";
 
 chai.use(spy);
 
@@ -32,21 +31,21 @@ describe("TrackedArray", () => {
         array.value = [1,2,3];
 
         // Will notify subscribers both times -- i.e. not a deep equal
-        array.value = [{a: 1}, {b: 2}];
-        array.value = [{a: 1}, {b: 2}];
+        array.value = [{a: 1}, {b: 2}] as any;
+        array.value = [{a: 1}, {b: 2}] as any;
 
         chai.expect(spy).to.have.been.called(2);
     });
 
     it("should throw if attempting to assign non-array value", () => {
         chai.expect(() => {
-            new TrackedArray(50);
+            new TrackedArray(50 as any);
         }).to.throw();
 
         chai.expect(() => {
-            new TrackedArray([1,2,3]).value = 50;
+            new TrackedArray([1,2,3]).value = 50 as any;
         }).to.throw();
 
         const thing = [1,2,3];
     })
-})
+});

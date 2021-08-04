@@ -1,13 +1,6 @@
-import { TrackedEntity } from "../lib/tracked-entity";
-
-(() =>{
-    const chai = require("chai");
-    const spy = require("chai-spies")
-    const { trackable, tracked, computed } = require("../src/decorators");
-    const { getTracked } = require("../src/decorators/tracked-property")
-    const { TrackedComputedSubject } = require("../src/tracked-computed-subject");
-    const { TrackedEntity } = require("../src/tracked-entity");
-    const { TrackedSubject } = require("../src/tracked-subject");
+import * as chai from "chai";
+import * as spy from "chai-spies";
+import { computed, trackable, tracked, TrackedComputedSubject, TrackedEntity, TrackedSubject } from "../src/main";
 
     chai.use(spy)
 
@@ -71,5 +64,4 @@ import { TrackedEntity } from "../lib/tracked-entity";
 
             chai.expect(spy).to.have.been.called(4);
         })
-    })
-})()
+    });
