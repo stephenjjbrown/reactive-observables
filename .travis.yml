@@ -7,6 +7,6 @@ script:
 - npm run coverage
 - npm run merge
 after_success:
-- curl -Os https://uploader.codecov.io/latest/linux/codecov
-- chmod +x codecov
-- ./codecov -Z -v -t c50d2b94-561a-4c13-beaf-6a96d3c4055e
+- curl -s https://codecov.io/bash > .codecov
+- chmod +x .codecov
+- ./.codecov -t c50d2b94-561a-4c13-beaf-6a96d3c4055e
