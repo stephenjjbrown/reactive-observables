@@ -2,6 +2,7 @@ language: node_js
 node_js:
 - '16.0'
 script:
+- npm install
 - npm run build
 - npm run coverage
 - npm run merge
