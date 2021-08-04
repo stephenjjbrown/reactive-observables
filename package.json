@@ -6,7 +6,7 @@
   "types": "./lib/main.d.ts",
   "scripts": {
     "build": "./node_modules/.bin/gulp",
-    "test": "./node_modules/.bin/nyc -r lcov -x \"*.spec.ts\" ./node_modules/.bin/jasmine-ts \"spec/**/*.spec.ts\""
+    "test": "./node_modules/.bin/nyc -r json -x \"*.spec.ts\" ./node_modules/.bin/jasmine-ts \"spec/**/*.spec.ts\""
   },
   "author": "",
   "license": "ISC",
