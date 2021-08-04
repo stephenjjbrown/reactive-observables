@@ -1,17 +1,16 @@
 {
-  "name": "dependency-tracked-subject",
-  "version": "1.4.11",
+  "name": "reactive-observables",
+  "version": "2.0",
   "description": "",
   "main": "./lib/main.js",
   "types": "./lib/main.d.ts",
   "scripts": {
     "build": "./node_modules/.bin/gulp",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "istanbul cover --include-all-sources jasmine-node spec"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.21",
     "rxjs": "^6.6.7",
     "shallow-equal": "^1.2.1"
   },
@@ -20,10 +19,12 @@
     "@types/node": "^16.4.12",
     "chai": "^4.3.4",
     "chai-spies": "^1.0.0",
+    "eslint": "^7.32.0",
     "gulp": "^3.9.1",
     "gulp-better-rollup": "^3.4.0",
     "gulp-typescript": "^5.0.1",
     "gulp-util": "^3.0.8",
+    "istanbul": "^0.4.5",
     "jasmine": "^3.8.0",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-node-resolve": "^3.4.0",
