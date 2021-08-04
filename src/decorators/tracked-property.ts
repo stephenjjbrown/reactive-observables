@@ -3,7 +3,6 @@ import { TrackedTypeForValue } from "../trackable";
 import { Subscription, merge } from "rxjs";
 import { getTrackedPropertyDefinitionList } from "./tracked-property-definition";
 import { getComputedProperty } from "./computed-property";
-import { getOrSetupTrackedProperty } from "./get-or-create-tracked-property";
 
 interface TrackedProperty<T> {
     subject: TrackedTypeForValue<T>;
@@ -31,6 +30,12 @@ export const getTrackedProperty = <T, K extends keyof T>(obj: T, name: K, notFou
     return existing.subject;
 }
 
+// Moved here to avoid circular dependencies
+export const getOrSetupTrackedProperty = <T, K extends keyof T>(obj: T, name: K, value: T[K]): TrackedTypeForValue<T[K]> => {
+    return getTrackedProperty(obj, name, list => (list[name] = {
+            subject: createTracked(value as T[K])
+        }).subject);
+}
 
 
 

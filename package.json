@@ -5,7 +5,7 @@
   "main": "./lib/main.js",
   "types": "./lib/main.d.ts",
   "scripts": {
-    "build": "./node_modules/.bin/gulp",
+    "build": "./node_modules/.bin/gulp build",
     "test": "./node_modules/.bin/jasmine-ts \"spec/**/*.spec.ts\"",
     "coverage": "./node_modules/.bin/nyc npm test",
     "report": "./node_modules/.bin/nyc report -r json -x \"*.spec.ts\"",
@@ -18,12 +18,13 @@
     "shallow-equal": "^1.2.1"
   },
   "devDependencies": {
+    "4": "^0.0.0",
     "@types/jasmine": "^3.8.2",
     "@types/node": "^16.4.12",
     "chai": "^4.3.4",
     "chai-spies": "^1.0.0",
     "eslint": "^7.32.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "gulp-better-rollup": "^3.4.0",
     "gulp-typescript": "^5.0.1",
     "gulp-util": "^3.0.8",
