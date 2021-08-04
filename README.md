@@ -1,5 +1,6 @@
 ![alt text](https://github.com/stephenjjbrown/computed-observable/blob/master/readme-header.jpg?raw=true)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5f466b241a624285b2a0144a3f096530)](https://app.codacy.com/gh/stephenjjbrown/computed-observable?utm_source=github.com&utm_medium=referral&utm_content=stephenjjbrown/computed-observable&utm_campaign=Badge_Grade_Settings)
 [![Wallaby.js](https://img.shields.io/badge/wallaby.js-configured-green.svg)](https://wallabyjs.com)
 [![codecov](https://codecov.io/gh/stephenjjbrown/computed-observable/branch/master/graph/badge.svg?token=08QNOBE4K9)](https://codecov.io/gh/stephenjjbrown/computed-observable)
 
