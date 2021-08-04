@@ -29,14 +29,7 @@ import { TrackedEntity } from "../lib/tracked-entity";
                     return this.innerValue + 4 + externalThing.value;
                 }
 
-                // @computed
-                // get something() {
-                //     return this.total * 2;
-                // }
-
                 constructor() {
-                    const test = this.total + this.total
-                    
                     // Ensure it's not just calling the regular class getter
                     chai.expect(this.count).to.equal(1);
                 }
@@ -46,7 +39,7 @@ import { TrackedEntity } from "../lib/tracked-entity";
             class Test {
 
                 @tracked
-                thingo = 4;
+                foo = 4;
 
                 @tracked
                 arr = [1,2,3];
@@ -54,7 +47,7 @@ import { TrackedEntity } from "../lib/tracked-entity";
                 @tracked
                 inner = new Inner();
 
-                computed = new TrackedComputedSubject(() => this.arr.reduce((a,b) => a+b) + this.thingo + this.inner.total)
+                computed = new TrackedComputedSubject(() => this.arr.reduce((a,b) => a+b) + this.foo + this.inner.total)
 
                 constructor() {
                 }
@@ -67,7 +60,7 @@ import { TrackedEntity } from "../lib/tracked-entity";
 
             chai.expect(test.value.computed.value).to.equal(30);
 
-            test.value.thingo = 5;
+            test.value.foo = 5;
             test.value.arr = [...test.value.arr, 10];
             test.value.inner.innerValue = 20;
 

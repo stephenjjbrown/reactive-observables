@@ -9,21 +9,21 @@
 
             class Test {
                 @tracked
-                value: number = 3;
+                foo: number = 3;
 
                 @tracked
-                coll: number[] = [1,2,3]
+                arr: number[] = [1,2,3]
 
-                computed = new TrackedComputedSubject(() => this.value + this.coll.reduce((a,b) => a + b));
+                computed = new TrackedComputedSubject(() => this.foo + this.arr.reduce((a,b) => a + b));
 
                 constructor() {
-                    this.value = 10;
-                    this.coll = [10];
+                    this.foo = 10;
+                    this.arr = [10];
 
                     // Should be immutable
-                    chai.expect(() => this.coll.push(10)).to.throw();
+                    chai.expect(() => this.arr.push(10)).to.throw();
                     
-                    this.coll = [...this.coll, 10];
+                    this.arr = [...this.arr, 10];
 
                     chai.expect(this.computed.value).to.equal(30);
                 }
