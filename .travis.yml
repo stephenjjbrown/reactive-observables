@@ -2,9 +2,9 @@ language: node_js
 node_js:
 - '16.0'
 before_install:
-- pip install --user codecov
-- npm install -g typescript
+- curl -Os https://uploader.codecov.io/latest/linux/codecov
+- chmod +x codecov
 script:
 - npm test
 after_success:
-- codecov --file coverage/lcov.info --disable search
+- ./codecov -t c50d2b94-561a-4c13-beaf-6a96d3c4055e
