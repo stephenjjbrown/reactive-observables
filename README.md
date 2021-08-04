@@ -1,3 +1,5 @@
+![alt text](https://github.com/stephenjjbrown/computed-observable/blob/master/readme-header.jpg?raw=true)
+
 # Reactive Observables
 
 Framework-agnostic observables and computed properties that update when their dependencies change, a la Knockout or Vue.js observables, built on and compatible with RxJS.
