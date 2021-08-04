@@ -1,6 +1,6 @@
 {
   "name": "dependency-tracked-subject",
-  "version": "1.4.0",
+  "version": "1.4.11",
   "description": "",
   "main": "./lib/main.js",
   "types": "./lib/main.d.ts",

@@ -24,9 +24,13 @@ export const getOrSetupComputedProperty = <T, K extends keyof T>(obj: T, name: K
 
 export const getComputedProperty = <T, K extends keyof T>(obj: T, name: K): TrackedComputedSubject<T[K]> => {
     const list = getComputedPropertyList(obj);
-    const existing = list[name];
-    if (!existing) {
-        throw new Error("Property accessed before initialized: " + name);
+
+    if (!list[name]) {
+        obj[name]; // Has not been initialized, so initialized it now
+        // Lazy initialization seems to be the correct step here? See the long comment in tracked-property.ts
+        //console.info("computed initialized lazily via getComputedProperty", obj, name, list);
+        //throw new Error("Property accessed before initialized: " + name);
     }
-    return existing.subject;
+
+    return list[name].subject;
 };

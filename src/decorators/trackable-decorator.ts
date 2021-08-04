@@ -9,5 +9,5 @@ export function trackable(constructor: any) {
 }
 
 export const isTrackableEntity = (obj: any) => {
-    return typeof obj === "object" &&  obj[TrackableEntityKey] === true;
+    return obj !== null && typeof obj === "object" && obj[TrackableEntityKey] === true;
 }
