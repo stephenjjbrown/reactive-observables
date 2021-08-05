@@ -1,9 +1,9 @@
 ![alt text](https://github.com/stephenjjbrown/computed-observable/blob/master/readme-header.jpg?raw=true)
 
-[![Build Status](https://travis-ci.com/stephenjjbrown/computed-observable.svg?branch=master)](https://travis-ci.com/stephenjjbrown/computed-observable)
+[![Build Status](https://travis-ci.com/stephenjjbrown/reactive-observables.svg?branch=master)](https://travis-ci.com/stephenjjbrown/reactive-observables)
 [![Wallaby.js](https://img.shields.io/badge/wallaby.js-configured-green.svg)](https://wallabyjs.com)
-[![codecov](https://codecov.io/gh/stephenjjbrown/computed-observable/branch/master/graph/badge.svg?token=08QNOBE4K9)](https://codecov.io/gh/stephenjjbrown/computed-observable)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f62357dfaa1d4064a3ae038913f08f03)](https://www.codacy.com/gh/stephenjjbrown/computed-observable/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stephenjjbrown/computed-observable&amp;utm_campaign=Badge_Grade)
+[![codecov](https://codecov.io/gh/stephenjjbrown/reactive-observables/branch/master/graph/badge.svg?token=32BYQKS6R0)](https://codecov.io/gh/stephenjjbrown/reactive-observables)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/0491eb927376489994ff5035ea00c885)](https://www.codacy.com/gh/stephenjjbrown/reactive-observables/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=stephenjjbrown/reactive-observables&amp;utm_campaign=Badge_Grade)
 
 # Reactive Observables
 
