@@ -24,6 +24,24 @@ An observable in Knockout is basically the same as a *BehaviorSubject* in RxJS. 
 This library attempts to replicate that additional dependency tracking and change-checking that you get with those other frameworks, but in the vernacular and API of RxJS. At the same time it aims to create a agnostic observable library that can be used independent of—or in the absence of—a front-end framework.
 
 ---
+## Using reactive()
+
+In an attempt to simplify the syntax, a new reactive() function has been added in the 2.0.0-beta version
+
+```ts
+// Passing in a primitive yields an observable/TrackedSubject
+const foo = reactive(3);
+const bar = reactive(5);
+
+// Passing in a function yields a Computed value
+const baz = reactive(() => foo.value + bar.value); 
+baz.value; // 15
+
+// Passing in an array yields a TrackedArray
+const array = reactive([1, 2, 3]);
+```
+
+---
 
 ## Observables
 
@@ -46,6 +64,7 @@ foo.subscribe(newValue => {
 });
 ```
 
+
 ### As a Decorator
 
 Can also be used as a TypeScript decorator
@@ -65,7 +84,6 @@ class Bar {
         });
     }
 }
-```
 
 ---
 
