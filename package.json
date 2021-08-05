@@ -1,7 +1,23 @@
 {
   "name": "reactive-observables",
-  "version": "2.0.2",
-  "description": "",
+  "version": "2.0.0-dev",
+  "description": "Framework-agnostic observables and computed properties similar to Knockout and Vue, built on RxJS",
+  "keywords": [
+    "observable",
+    "observer",
+    "subscription",
+    "subscriber",
+    "reactive",
+    "functional",
+    "rxjs",
+    "knockout",
+    "knockout.js",
+    "vue.js",
+    "vue",
+    "computed",
+    "observablearray",
+    "decorators"
+  ],
   "main": "./lib/main.js",
   "types": "./lib/main.d.ts",
   "scripts": {
@@ -11,14 +27,21 @@
     "report": "./node_modules/.bin/nyc report -r json -x \"*.spec.ts\"",
     "merge": "nyc merge .nyc_output coverage/coverage.json"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephenjjbrown/reactive-observables.git"
+  },
+  "author": "Stephen Brown",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stephenjjbrown/reactive-observables/issues"
+  },
+  "homepage": "https://github.com/stephenjjbrown/reactive-observables#readme",
   "dependencies": {
     "rxjs": "^6.6.7",
     "shallow-equal": "^1.2.1"
   },
   "devDependencies": {
-    "4": "^0.0.0",
     "@types/jasmine": "^3.8.2",
     "@types/node": "^16.4.12",
     "chai": "^4.3.4",
