@@ -47,7 +47,7 @@ describe("@tracked Property Decorator", () => {
 
                 this.foo = 100;
                 this.arr = [100];
-                chai.expect(spy).to.be.called(2);
+                chai.expect(spy).to.be.called.exactly(2);
 
                 chai.expect(() => {
                     subscribe(this, "doesntexist" as any, spy);
@@ -88,7 +88,7 @@ describe("@computed Property Decorator", () => {
 
                 this.baz = 5;
 
-                chai.expect(spy).to.be.called(1);
+                chai.expect(spy).to.be.called.exactly(1);
 
                 // chai.expect(() => {
                 //     subscribe(this, "doesntexist" as any, spy);

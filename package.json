@@ -24,8 +24,8 @@
     "build": "./node_modules/.bin/gulp build",
     "test": "./node_modules/.bin/jasmine-ts \"spec/**/*.spec.ts\"",
     "coverage": "./node_modules/.bin/nyc npm test",
-    "report": "./node_modules/.bin/nyc report -r json -x \"*.spec.ts\"",
-    "merge": "nyc merge .nyc_output coverage/coverage.json"
+    "report-deprecated": "./node_modules/.bin/nyc report -r json -x \"*.spec.ts\"",
+    "report": "nyc merge .nyc_output coverage/coverage.json"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,8 @@
     "shallow-equal": "^1.2.1"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.21",
+    "@types/chai-spies": "^1.0.3",
     "@types/jasmine": "^3.8.2",
     "@types/node": "^16.4.12",
     "chai": "^4.3.4",

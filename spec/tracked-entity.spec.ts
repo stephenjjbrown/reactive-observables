@@ -66,6 +66,6 @@ import { computed, trackable, tracked, TrackedComputedSubject, TrackedEntity, Tr
             test.value = null as any; // Make sure subscription is removed when tracked entity is updated to a new value
             testObj.foo = 6; // This should not call subscribers
 
-            chai.expect(spy).to.have.been.called(6);
+            chai.expect(spy).to.have.been.called.exactly(6);
         })
     });

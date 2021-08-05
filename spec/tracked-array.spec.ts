@@ -19,7 +19,7 @@ describe("TrackedArray", () => {
 
         array.value = [1,2,3,4];
 
-        chai.expect(spy).to.have.been.called(1);
+        chai.expect(spy).to.have.been.called.exactly(1);
     });
 
     it("should use shallow compare to determine whether to notify subscribers", () => {
@@ -36,7 +36,7 @@ describe("TrackedArray", () => {
         array.value = [{a: 1}, {b: 2}] as any;
         array.value = [{a: 1}, {b: 2}] as any;
 
-        chai.expect(spy).to.have.been.called(2);
+        chai.expect(spy).to.have.been.called.exactly(2);
     });
 
     it("should throw if attempting to assign non-array value", () => {

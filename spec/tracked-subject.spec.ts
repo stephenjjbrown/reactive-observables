@@ -34,7 +34,7 @@ describe("TrackedSubject", () => {
         subject.value = [1,2];
         subject.value = [1,2];
 
-        chai.expect(spy).to.have.been.called(6);
+        chai.expect(spy).to.have.been.called.exactly(6);
     })
 
     it("should allow custom compare function", () => {
@@ -50,6 +50,6 @@ describe("TrackedSubject", () => {
         customSubject.value = [1,2] as any;
         customSubject.value = [1,2] as any;
 
-        chai.expect(customSpy).to.have.been.called(5);
+        chai.expect(customSpy).to.have.been.called.exactly(5);
     });
 });
