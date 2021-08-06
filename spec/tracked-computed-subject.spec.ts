@@ -1,4 +1,5 @@
 import * as chai from "chai";
+import { expect } from "chai";
 import { TrackedArray, TrackedComputedSubject, TrackedSubject } from "../src/main";
 
 describe("TrackedComputedSubject", () => {
@@ -36,16 +37,42 @@ describe("TrackedComputedSubject", () => {
 
 
     it("should throw if circular dependencies detected", () => {
-        // const z = new TrackedSubject(false);
-        // var b;
-        // const a = new TrackedComputedSubject(() => {
-        //     z.value //?
-        //     b && b.value //?
-        //     return z.value ? b.value : null
-        // });
-        // b = new TrackedComputedSubject(() => a.value);
 
-        // z.value = true;
-        // 1 //?
-    })
+        const spy = chai.spy();
+
+        const z = new TrackedSubject(false);
+
+        const a = new TrackedComputedSubject(() => {
+            return z.value ? b.value : null;
+        });
+        var  b = new TrackedComputedSubject(() => z.value ? a.value : null);
+
+        a.onCircularDependencyFound = spy;
+        b.onCircularDependencyFound = spy;
+
+        chai.expect(() => {
+            z.value = true;
+        }).to.not.throw(); 
+
+        chai.expect(spy).to.have.been.called.at.least(1);
+    });
+
+    // This error happened with an earlier implementation and should be prevented in future
+    it("should not throw if same value is referenced twice in getter", () => {
+        const spy = chai.spy();
+
+        const z = new TrackedSubject(false);
+
+        const a = new TrackedComputedSubject(() => 10);
+        var  b = new TrackedComputedSubject(() => z.value ? a.value + a.value : null);
+
+        a.onCircularDependencyFound = spy;
+        b.onCircularDependencyFound = spy;
+
+        chai.expect(() => {
+            z.value = true;
+        }).to.not.throw();        
+
+        chai.expect(spy).to.not.have.been.called();
+    });
 });

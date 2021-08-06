@@ -26,6 +26,8 @@ export class TrackedSubject<T> {
 
     subscribe(observer: (value: T) => void) {
         return this.observable
-            .subscribe(observer);
+            .subscribe(observer, err => {
+                err; //?
+            }, );
     }
 }

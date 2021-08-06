@@ -1,4 +1,4 @@
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, Observable, Observer } from "rxjs";
 import { distinctUntilChanged, skip } from "rxjs/operators";
 import { trackableManager } from "./trackable-manager";
 import { Trackable } from "./trackable";
@@ -24,13 +24,22 @@ export class TrackedComputedSubject<T> {
 
     private _dependencies: Trackable<any>[] = [];
 
+    onCircularDependencyFound: (() => void) | null = null;
+
     private updateSubscriptions(dependencies: Trackable<any>[]) {
         for (const subscribable of dependencies) {
             if (subscribable !== this && this._dependencies.indexOf(subscribable) === -1) {
 
-                subscribable.subscribe(() => {
+                if (subscribable instanceof TrackedComputedSubject) {
+                    if (subscribable._dependencies.indexOf(this) != -1) {
+                        console.error("Circular dependency found between two computeds", this, subscribable);
+                        this.onCircularDependencyFound?.();
+                    }
+                }
+
+                const subscription = subscribable.subscribe((...args) => {
                     this.subject.next(this.evaluateValue());
-                })
+                });
  
                 this._dependencies.push(subscribable);
             }
@@ -51,6 +60,8 @@ export class TrackedComputedSubject<T> {
 
     subscribe(observer: (value: T) => void) {
         return this.observable
-            .subscribe(observer);
+            .subscribe(observer, err => {
+                err; //?
+            });
     }
 }
